@@ -16,6 +16,7 @@ const Development = () => {
     { id: 4, title: "Улучшить навыки делегирования", category: "soft", impact: "high", deadline: "2 недели", completed: false, progress: 20 },
     { id: 5, title: "Получить сертификацию AWS", category: "hard", impact: "medium", deadline: "2 месяца", completed: true, progress: 100 }
   ]);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const toggleTask = (id: number) => {
     setTasks(tasks.map(task => 
@@ -103,9 +104,23 @@ const Development = () => {
               <CardTitle>Персональный план</CardTitle>
               <CardDescription>Задачи для вашего профессионального роста</CardDescription>
             </div>
-            <Button>
-              <Icon name="Sparkles" size={20} className="mr-2" />
-              Сгенерировать новый план
+            <Button 
+              onClick={() => {
+                setIsGenerating(true);
+                setTimeout(() => {
+                  const newTasks = [
+                    { id: Date.now() + 1, title: "Провести tech talk по архитектуре", category: "soft", impact: "high", deadline: "3 недели", completed: false, progress: 0 },
+                    { id: Date.now() + 2, title: "Изучить микрофронтенды", category: "hard", impact: "high", deadline: "1 месяц", completed: false, progress: 0 },
+                    { id: Date.now() + 3, title: "Менторить junior разработчика", category: "soft", impact: "high", deadline: "2 месяца", completed: false, progress: 0 }
+                  ];
+                  setTasks([...tasks.filter(t => !t.completed), ...newTasks, ...tasks.filter(t => t.completed)]);
+                  setIsGenerating(false);
+                }, 2000);
+              }}
+              disabled={isGenerating}
+            >
+              <Icon name={isGenerating ? "Loader2" : "Sparkles"} size={20} className={`mr-2 ${isGenerating ? 'animate-spin' : ''}`} />
+              {isGenerating ? 'Генерирую...' : 'Сгенерировать новый план'}
             </Button>
           </CardHeader>
           <CardContent className="space-y-6">

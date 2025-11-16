@@ -79,14 +79,22 @@ const Profile = () => {
                     На платформе с окт 2024
                   </Badge>
                 </div>
-                <div className="flex gap-3 pt-2">
+                <div className="flex flex-wrap gap-3 pt-2">
                   <Button onClick={() => navigate('/diagnostic')}>
                     <Icon name="RefreshCw" size={16} className="mr-2" />
                     Пройти диагностику
                   </Button>
-                  <Button variant="outline">
-                    <Icon name="Settings" size={16} className="mr-2" />
-                    Настройки
+                  <Button variant="outline" onClick={() => navigate('/career')}>
+                    <Icon name="TrendingUp" size={16} className="mr-2" />
+                    Карьера
+                  </Button>
+                  <Button variant="outline" onClick={() => navigate('/development')}>
+                    <Icon name="Target" size={16} className="mr-2" />
+                    План развития
+                  </Button>
+                  <Button variant="outline" onClick={() => navigate('/resources')}>
+                    <Icon name="Library" size={16} className="mr-2" />
+                    Ресурсы
                   </Button>
                 </div>
               </div>

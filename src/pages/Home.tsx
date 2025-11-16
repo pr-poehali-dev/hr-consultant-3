@@ -134,18 +134,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="max-w-3xl mx-auto text-center space-y-8 py-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Готовы начать путь развития?</h2>
-          <p className="text-muted-foreground text-lg">
-            Пройдите диагностику за 5-7 минут и получите персональный план карьерного роста
-          </p>
-          <Link to="/diagnostic">
-            <Button size="lg" className="text-lg px-12 py-6 rounded-xl">
-              <Icon name="Rocket" size={20} className="mr-2" />
-              Начать сейчас
-            </Button>
-          </Link>
-        </section>
+
       </div>
     </div>
   );
