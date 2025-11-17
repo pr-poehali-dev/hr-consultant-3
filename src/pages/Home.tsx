@@ -56,10 +56,10 @@ const Home = () => {
             ИИ-ассистент анализирует навыки, помогает ставить карьерные цели и формирует персональные планы развития
           </p>
           <div className="flex gap-4 justify-center pt-4">
-            <Link to="/diagnostic">
+            <Link to="/registration">
               <Button size="lg" className="text-lg px-8 py-6 rounded-xl">
-                <Icon name="Zap" size={20} className="mr-2" />
-                Пройти диагностику
+                <Icon name="UserPlus" size={20} className="mr-2" />
+                Регистрация
               </Button>
             </Link>
             <Link to="/profile">
