@@ -16,19 +16,16 @@ const AvatarSelection = () => {
   const avatars = [
     {
       id: 1,
-      name: "Медвежонок",
       image: "https://cdn.poehali.dev/files/49a93a3f-286f-436f-9a71-e1b03ad183cb.jpg",
       description: "Дружелюбный и заботливый помощник"
     },
     {
       id: 2,
-      name: "Буба",
       image: "https://cdn.poehali.dev/files/23cadad3-2905-4b3d-ba9e-9cd8d86d7ebd.jpg",
       description: "Весёлый и находчивый советник"
     },
     {
       id: 3,
-      name: "Телепузик",
       image: "https://cdn.poehali.dev/files/0b75a6d2-9fe6-4081-b0a8-314975e637a2.jpg",
       description: "Мудрый и технологичный ассистент"
     }
@@ -99,12 +96,11 @@ const AvatarSelection = () => {
                       <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5">
                         <img
                           src={avatar.image}
-                          alt={avatar.name}
+                          alt={avatar.description}
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="text-center space-y-2">
-                        <h3 className="text-xl font-bold">{avatar.name}</h3>
                         <p className="text-sm text-muted-foreground">{avatar.description}</p>
                       </div>
                       {selectedAvatar === avatar.id && (
