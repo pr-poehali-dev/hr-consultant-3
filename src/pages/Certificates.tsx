@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import { useNavigate } from "react-router-dom";
+import Navigation from "@/components/Navigation";
 
 interface Certificate {
   id: number;
@@ -79,7 +80,9 @@ const Certificates = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
       <div className="container mx-auto px-4 max-w-6xl space-y-8">
         <div className="flex items-center justify-between">
           <div>
@@ -135,6 +138,7 @@ const Certificates = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

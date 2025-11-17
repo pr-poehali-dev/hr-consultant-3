@@ -10,6 +10,8 @@ const Navigation = () => {
     { path: '/', label: 'Главная', icon: 'Home' },
     { path: '/diagnostic', label: 'Диагностика', icon: 'ClipboardCheck' },
     { path: '/profile', label: 'Профиль', icon: 'User' },
+    { path: '/projects', label: 'Мои проекты', icon: 'FolderOpen' },
+    { path: '/certificates', label: 'Сертификаты', icon: 'Award' },
     { path: '/career', label: 'Карьера', icon: 'TrendingUp' },
     { path: '/development', label: 'План', icon: 'ListChecks' },
     { path: '/resources', label: 'Ресурсы', icon: 'BookOpen' },
