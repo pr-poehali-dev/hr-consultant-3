@@ -18,21 +18,21 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center overflow-x-auto scrollbar-hide">
+    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <div className="container mx-auto">
+        <div className="flex items-center overflow-x-auto">
           {navItems.map((item) => (
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
               className={cn(
-                "flex items-center gap-2 px-4 py-3.5 whitespace-nowrap transition-colors relative min-w-fit",
+                "flex items-center gap-2 px-6 py-4 whitespace-nowrap border-b-2 transition-colors",
                 isActive(item.path)
-                  ? "text-cyan-500 font-medium after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-cyan-500"
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "text-primary border-primary font-medium"
+                  : "text-muted-foreground border-transparent hover:text-foreground hover:border-muted-foreground/50"
               )}
             >
-              <Icon name={item.icon as any} size={16} />
+              <Icon name={item.icon as any} size={18} />
               <span className="text-sm">{item.label}</span>
             </button>
           ))}
