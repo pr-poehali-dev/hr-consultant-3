@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
+import FileUploadButton from "@/components/FileUploadButton";
 
 interface UserData {
   fullName: string;
@@ -316,7 +317,7 @@ const ProfileNew = () => {
         </Card>
 
         <Tabs defaultValue="info" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="info">
               <Icon name="User" size={16} className="mr-2" />
               Личная информация
@@ -324,6 +325,10 @@ const ProfileNew = () => {
             <TabsTrigger value="projects">
               <Icon name="FolderOpen" size={16} className="mr-2" />
               Мои проекты
+            </TabsTrigger>
+            <TabsTrigger value="certificates">
+              <Icon name="Award" size={16} className="mr-2" />
+              Сертификаты
             </TabsTrigger>
             <TabsTrigger value="career">
               <Icon name="TrendingUp" size={16} className="mr-2" />
@@ -484,6 +489,74 @@ const ProfileNew = () => {
                     ))}
                   </div>
                 )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="certificates" className="space-y-6">
+            <Card className="animate-fade-in">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name="Award" size={24} className="text-primary" />
+                  Сертификаты и пройденные курсы
+                </CardTitle>
+                <CardDescription>
+                  Ваши достижения в обучении и профессиональном развитии
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {[
+                    {
+                      title: 'React Advanced Patterns',
+                      org: 'Udemy',
+                      date: 'Сен 2024',
+                      type: 'Курс',
+                      verified: true
+                    },
+                    {
+                      title: 'TypeScript Expert',
+                      org: 'Coursera',
+                      date: 'Июл 2024',
+                      type: 'Сертификат',
+                      verified: true
+                    },
+                    {
+                      title: 'System Design Mastery',
+                      org: 'Stepik',
+                      date: 'Май 2024',
+                      type: 'Курс',
+                      verified: false
+                    }
+                  ].map((cert, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 rounded-lg border bg-card hover:shadow-lg transition-all duration-300"
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex-1">
+                          <h4 className="font-semibold line-clamp-2">{cert.title}</h4>
+                          <p className="text-sm text-muted-foreground">{cert.org}</p>
+                        </div>
+                        {cert.verified && (
+                          <div className="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center">
+                            <Icon name="BadgeCheck" size={14} className="text-green-600" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <Badge variant="secondary" className="text-xs">
+                          {cert.type}
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">{cert.date}</span>
+                      </div>
+                    </div>
+                  ))}
+                  <button className="p-6 rounded-lg border-2 border-dashed hover:border-primary/50 transition-colors flex flex-col items-center justify-center min-h-[140px] text-muted-foreground hover:text-primary">
+                    <Icon name="Plus" size={32} className="mb-2" />
+                    <span className="text-sm">Добавить сертификат</span>
+                  </button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -804,6 +877,9 @@ const ProfileNew = () => {
           </TabsContent>
         </Tabs>
       </div>
+      <FileUploadButton onUpload={(file, category) => {
+        console.log('Uploaded:', file.name, 'to', category);
+      }} />
     </div>
   );
 };

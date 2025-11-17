@@ -13,6 +13,7 @@ import Career from "./pages/Career";
 import Resources from "./pages/Resources";
 import Registration from "./pages/Registration";
 import AvatarSelection from "./pages/AvatarSelection";
+import Certificates from "./pages/Certificates";
 import NotFound from "./pages/NotFound";
 import AIAssistant from "./components/AIAssistant";
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/development" element={<Development />} />
           <Route path="/career" element={<Career />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/certificates" element={<Certificates />} />
           <Route path="/profile" element={<ProfileNew />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

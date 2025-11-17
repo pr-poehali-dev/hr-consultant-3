@@ -96,6 +96,10 @@ const Profile = () => {
                     <Icon name="Library" size={16} className="mr-2" />
                     Ресурсы
                   </Button>
+                  <Button variant="outline" onClick={() => navigate('/certificates')}>
+                    <Icon name="Award" size={16} className="mr-2" />
+                    Сертификаты
+                  </Button>
                 </div>
               </div>
             </div>
