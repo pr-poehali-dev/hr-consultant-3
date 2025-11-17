@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
 import { useNavigate } from "react-router-dom";
+import Navigation from "@/components/Navigation";
 
 const Resources = () => {
   const navigate = useNavigate();
@@ -388,7 +389,9 @@ const Resources = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
       <div className="container mx-auto px-4 max-w-7xl space-y-8">
         <div className="flex items-center justify-between">
           <div className="space-y-2">
@@ -487,6 +490,7 @@ const Resources = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 

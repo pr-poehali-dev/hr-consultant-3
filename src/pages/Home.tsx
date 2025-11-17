@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
+import Navigation from "@/components/Navigation";
 
 const Home = () => {
   const features = [
@@ -41,7 +42,9 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       <div className="container mx-auto px-4 py-16 space-y-24">
         
         <section className="text-center space-y-8 max-w-4xl mx-auto animate-fade-in">
@@ -137,6 +140,7 @@ const Home = () => {
 
       </div>
     </div>
+    </>
   );
 };
 
