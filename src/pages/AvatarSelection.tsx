@@ -16,21 +16,21 @@ const AvatarSelection = () => {
   const avatars = [
     {
       id: 1,
-      name: "Роботикс",
-      image: "https://cdn.poehali.dev/projects/ba9d3921-90bd-47f1-af32-cb02b9558cd7/files/b8f4981d-7f4c-4365-aba8-c85da4e21c97.jpg",
-      description: "Дружелюбный помощник для решения любых задач"
+      name: "Маскот",
+      image: "https://cdn.poehali.dev/files/a9c10da2-e307-4bf0-bf6c-a121595a8022.jpg",
+      description: "Веселый и энергичный помощник для быстрых решений"
     },
     {
       id: 2,
-      name: "Футура",
-      image: "https://cdn.poehali.dev/projects/ba9d3921-90bd-47f1-af32-cb02b9558cd7/files/17708a03-6bb0-46e8-b1b4-46657cc7833d.jpg",
-      description: "Современный ассистент с аналитическим подходом"
+      name: "Професор",
+      image: "https://cdn.poehali.dev/files/62cee220-2e8d-4035-af18-bc32e3c20236.jpg",
+      description: "Мудрый советник с глубокими знаниями"
     },
     {
       id: 3,
-      name: "Холограмм",
-      image: "https://cdn.poehali.dev/projects/ba9d3921-90bd-47f1-af32-cb02b9558cd7/files/1c2f9cec-434e-49e3-99c6-090a978ed00c.jpg",
-      description: "Элегантный советник для творческих решений"
+      name: "Кофеин",
+      image: "https://cdn.poehali.dev/files/77ac147e-bca7-42ed-bc9d-8343cf46ade1.jpg",
+      description: "Бодрый и креативный помощник для продуктивности"
     }
   ];
 
