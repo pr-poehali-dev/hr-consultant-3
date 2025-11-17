@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import Icon from "@/components/ui/icon";
 import { useNavigate } from "react-router-dom";
+import Navigation from "@/components/Navigation";
 
 const Diagnostic = () => {
   const navigate = useNavigate();
@@ -62,7 +63,9 @@ const Diagnostic = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="mb-8 space-y-4">
           <Button variant="ghost" onClick={() => navigate('/')} className="mb-4">
@@ -271,6 +274,7 @@ const Diagnostic = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 

@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
 import FileUploadButton from "@/components/FileUploadButton";
+import Navigation from "@/components/Navigation";
 
 interface UserData {
   fullName: string;
@@ -277,7 +278,9 @@ const ProfileNew = () => {
   const initials = userData.fullName.split(' ').map(n => n[0]).join('').toUpperCase();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 py-12">
       <div className="container mx-auto px-4 max-w-6xl space-y-8">
         <div className="flex items-center justify-between">
           <h1 className="text-4xl font-bold">Профиль</h1>
@@ -881,6 +884,7 @@ const ProfileNew = () => {
         console.log('Uploaded:', file.name, 'to', category);
       }} />
     </div>
+    </>
   );
 };
 
