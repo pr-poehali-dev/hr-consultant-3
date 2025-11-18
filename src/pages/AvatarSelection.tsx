@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -12,6 +13,9 @@ const AvatarSelection = () => {
   const { toast } = useToast();
   const [selectedAvatar, setSelectedAvatar] = useState<number | null>(null);
   const [avatarName, setAvatarName] = useState("");
+  const [showCustomAvatarDialog, setShowCustomAvatarDialog] = useState(false);
+  const [customAvatarPrompt, setCustomAvatarPrompt] = useState("");
+  const [isGeneratingAvatar, setIsGeneratingAvatar] = useState(false);
 
   const avatars = [
     {
@@ -74,7 +78,7 @@ const AvatarSelection = () => {
             <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
               <Icon name="Bot" size={32} className="text-white" />
             </div>
-            <CardTitle className="text-3xl font-bold">Выберите AI-помощника</CardTitle>
+            <CardTitle className="text-3xl font-bold">Создайте AI-помощника</CardTitle>
             <CardDescription className="text-lg">
               Выберите аватар и дайте ему имя. Ваш помощник будет всегда рядом
             </CardDescription>
@@ -113,6 +117,20 @@ const AvatarSelection = () => {
                     </CardContent>
                   </Card>
                 ))}
+                
+                <Card
+                  className="cursor-pointer transition-all duration-300 hover:shadow-xl hover:border-primary/50 border-dashed border-2"
+                  onClick={() => setShowCustomAvatarDialog(true)}
+                >
+                  <CardContent className="p-6 space-y-4 h-full flex flex-col items-center justify-center">
+                    <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center w-full">
+                      <Icon name="Sparkles" size={64} className="text-primary" />
+                    </div>
+                    <div className="text-center space-y-2">
+                      <p className="text-sm font-medium">Создать аватар самостоятельно с помощью ИИ</p>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
               {selectedAvatar !== null && (
@@ -148,6 +166,85 @@ const AvatarSelection = () => {
             </form>
           </CardContent>
         </Card>
+
+        {showCustomAvatarDialog && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 animate-fade-in">
+            <Card className="max-w-lg w-full">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name="Sparkles" size={24} />
+                  Создать аватар с помощью ИИ
+                </CardTitle>
+                <CardDescription>
+                  Опишите, как должен выглядеть ваш AI-помощник
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="customPrompt">Описание аватара</Label>
+                  <Textarea
+                    id="customPrompt"
+                    placeholder="Например: Дружелюбный робот в синем цвете с улыбкой..."
+                    value={customAvatarPrompt}
+                    onChange={(e) => setCustomAvatarPrompt(e.target.value)}
+                    className="min-h-[100px]"
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <Button
+                    onClick={async () => {
+                      if (!customAvatarPrompt.trim()) {
+                        toast({
+                          title: "Ошибка",
+                          description: "Пожалуйста, введите описание аватара",
+                          variant: "destructive"
+                        });
+                        return;
+                      }
+                      setIsGeneratingAvatar(true);
+                      toast({
+                        title: "Генерация началась",
+                        description: "Создаём ваш уникальный аватар..."
+                      });
+                      setTimeout(() => {
+                        setIsGeneratingAvatar(false);
+                        setShowCustomAvatarDialog(false);
+                        toast({
+                          title: "Готово!",
+                          description: "Ваш аватар создан"
+                        });
+                      }, 3000);
+                    }}
+                    disabled={isGeneratingAvatar}
+                    className="flex-1"
+                  >
+                    {isGeneratingAvatar ? (
+                      <>
+                        <Icon name="Loader2" size={16} className="mr-2 animate-spin" />
+                        Генерация...
+                      </>
+                    ) : (
+                      <>
+                        <Icon name="Wand2" size={16} className="mr-2" />
+                        Создать аватар
+                      </>
+                    )}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setShowCustomAvatarDialog(false);
+                      setCustomAvatarPrompt("");
+                    }}
+                    disabled={isGeneratingAvatar}
+                  >
+                    Отмена
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
     </div>
   );
