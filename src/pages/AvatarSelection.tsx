@@ -19,19 +19,9 @@ const AvatarSelection = () => {
 
   const avatars = [
     {
-      id: 1,
-      image: "https://cdn.poehali.dev/files/49a93a3f-286f-436f-9a71-e1b03ad183cb.jpg",
-      description: "Дружелюбный и заботливый помощник"
-    },
-    {
       id: 2,
       image: "https://cdn.poehali.dev/files/23cadad3-2905-4b3d-ba9e-9cd8d86d7ebd.jpg",
       description: "Весёлый и находчивый советник"
-    },
-    {
-      id: 3,
-      image: "https://cdn.poehali.dev/files/0b75a6d2-9fe6-4081-b0a8-314975e637a2.jpg",
-      description: "Мудрый и технологичный ассистент"
     }
   ];
 
